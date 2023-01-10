@@ -5,7 +5,7 @@
 <!--
     namespace:名称空间
 -->
-<mapper namespace="test">
+<mapper namespace="com.izumi.mapper.UserMapper">
     <select id="selectAll" resultType="com.izumi.pojo.User">
         select * from tb_user;
     </select>
