@@ -74,7 +74,47 @@
                 #{id};
     -->
     <select id="selectById" parameterType="int" resultMap="brandResultMap">
-        select * from tb_brand where id = #{id};
+        select *
+        from tb_brand
+        where id = #{id};
+    </select>
+
+
+    <!--
+        条件查询
+    -->
+    <!--
+        <select id="selectByCondition" resultMap="brandResultMap">
+            select *
+            from tb_brand
+            where status = #{status}
+              and company_name = #{companyName}
+              and brand_name = #{brandName};
+        </select>
+    -->
+
+
+    <!--
+        动态条件查询
+
+        问题：当第一个条件为空时，剩余条件会变成 where and xxx，报错
+        解决：1. 恒等式 where 1=1; 2. mybatis提供的<where>标签
+    -->
+    <select id="selectByCondition" resultMap="brandResultMap">
+        select *
+        from tb_brand
+        <where>
+            <if test="status != null">
+                status = #{status}
+            </if>
+            <if test="companyName != null and companyName != ''">
+                and company_name like #{companyName}
+            </if>
+            <if test="brandName != null and brandName != ''">
+                and brand_name like #{brandName};
+            </if>
+        </where>
+
     </select>
 
 
