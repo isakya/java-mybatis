@@ -117,5 +117,28 @@
 
     </select>
 
+    <!--单条件查询-->
+    <select id="selectByConditionSingle" resultMap="brandResultMap">
+        select *
+        from tb_brand
+        <where>
+            <choose>
+                <when test="status != null">
+                    status = #{status}
+                </when>
+                <when test="companyName != null and companyName != ''">
+                    company_name like #{companyName}
+                </when>
+                <when test="brandName != null and brandName != ''">
+                    brand_name like #{brandName};
+                </when>
+                <!--有<where>就不需要了-->
+                <!--<otherwise>-->
+                <!--    1=1-->
+                <!--</otherwise>-->
+            </choose>
+        </where>
+
+    </select>
 
 </mapper>

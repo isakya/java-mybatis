@@ -40,4 +40,11 @@ public interface BrandMapper {
 
     // 3.
     List<Brand> selectByCondition(Map map);
+
+
+
+
+
+    // 单条件查询
+    List<Brand> selectByConditionSingle(Brand brand);
 }
