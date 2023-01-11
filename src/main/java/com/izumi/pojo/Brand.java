@@ -1,5 +1,7 @@
 package com.izumi.pojo;
 
+import java.util.List;
+
 /**
  * 品牌
  *

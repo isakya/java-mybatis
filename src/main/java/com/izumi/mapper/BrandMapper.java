@@ -10,4 +10,7 @@ public interface BrandMapper {
      * @return
      */
     public List<Brand> selectAll();
+
+    // ²é¿´ÏêÇé
+    public Brand selectById(int id);
 }

@@ -14,7 +14,17 @@
             * 缺点：不灵活
             * 解决：resultMap
     -->
+    <!--
+        id:唯一标识
+        type:映射的类型，支持别名
+    -->
     <resultMap id="brandResultMap" type="brand">
+        <!--
+            id:完成主键字段的映射
+                column：表的列名
+                property：实体类属性名
+            result:完成一般字段的映射
+        -->
         <result column="brand_name" property="brandName" />
         <result column="brand_name" property="companyName" />
     </resultMap>
@@ -41,6 +51,17 @@
     <!--    select *-->
     <!--    from tb_brand;-->
     <!--</select>-->
+
+
+
+
+    <!--
+        查询详情
+    -->
+    <select id="selectById" resultMap="brandResultMap">
+        select * from tb_brand where id = #{id};
+    </select>
+
 
 
 </mapper>
