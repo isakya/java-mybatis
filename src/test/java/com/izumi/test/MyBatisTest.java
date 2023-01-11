@@ -230,4 +230,47 @@ public class MyBatisTest {
         // 5. 释放资源
         sqlSession.close();
     }
+
+
+    @Test
+    public void testUpdate() throws IOException {
+        int id = 9;
+        // 接收参数
+        int status = 1;
+        String companyName = "波导手机111";
+        String brandName = "波导234234";
+        String description = "手机中的战斗机";
+        int ordered = 100;
+
+        // 封装对象
+        Brand brand = new Brand();
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        // brand.setDescription(description);
+        // brand.setOrdered(ordered);
+        brand.setId(id);
+
+
+        // 1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 获取SqlSession对象
+        // true: 设置自动提交事务
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        // 3. 虎好去Mapper接口的代理对象
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 执行方法
+        int count = brandMapper.update(brand);
+        // count影响的行数
+        System.out.println(count);
+
+
+        // 5. 释放资源
+        sqlSession.close();
+    }
 }

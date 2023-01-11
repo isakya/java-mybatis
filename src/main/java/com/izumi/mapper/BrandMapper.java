@@ -52,4 +52,8 @@ public interface BrandMapper {
     // Ìí¼Ó
     void add(Brand brand);
 
+
+    // ĞŞ¸Ä
+    int update(Brand brand);
+
 }
