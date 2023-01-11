@@ -132,12 +132,18 @@
                 <when test="brandName != null and brandName != ''">
                     brand_name like #{brandName};
                 </when>
-                <otherwise>
-                    1=1
-                </otherwise>
+                <!--有<where>就不需要了-->
+                <!--<otherwise>-->
+                <!--    1=1-->
+                <!--</otherwise>-->
             </choose>
         </where>
-
     </select>
+
+    <!--添加-->
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_brand (brand_name, company_name, ordered, description, status)
+        values (#{brandName}, #{companyName}, #{ordered}, #{description}, #{status})
+    </insert>
 
 </mapper>

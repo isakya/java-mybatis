@@ -146,4 +146,88 @@ public class MyBatisTest {
         // 5. 释放资源
         sqlSession.close();
     }
+
+
+
+
+    @Test
+    public void testAdd() throws IOException {
+        // 接收参数
+        int status = 1;
+        String companyName = "波导手机";
+        String brandName = "波导";
+        String description = "手机中的战斗机";
+        int ordered = 100;
+
+        // 封装对象
+        Brand brand = new Brand();
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+
+
+        // 1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 获取SqlSession对象
+        // true: 设置自动提交事务
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        // 3. 虎好去Mapper接口的代理对象
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 执行方法
+        brandMapper.add(brand);
+
+        // 提交事务
+        // sqlSession.commit();
+
+        // 5. 释放资源
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void testAdd2() throws IOException {
+        // 接收参数
+        int status = 1;
+        String companyName = "波导手机";
+        String brandName = "波导";
+        String description = "手机中的战斗机";
+        int ordered = 100;
+
+        // 封装对象
+        Brand brand = new Brand();
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+
+
+        // 1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 获取SqlSession对象
+        // true: 设置自动提交事务
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        // 3. 虎好去Mapper接口的代理对象
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 执行方法
+        brandMapper.add(brand);
+        Integer id = brand.getId();
+        System.out.println("@@@"+id);
+
+
+        // 5. 释放资源
+        sqlSession.close();
+    }
 }

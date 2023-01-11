@@ -47,4 +47,9 @@ public interface BrandMapper {
 
     // 单条件查询
     List<Brand> selectByConditionSingle(Brand brand);
+
+
+    // 添加
+    void add(Brand brand);
+
 }
