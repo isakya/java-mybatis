@@ -9,8 +9,10 @@
     <select id="selectAll" resultType="user">
         select * from tb_user;
     </select>
-    <select id="selectById" resultType="user">
-        select *
-        from tb_user where id = #{id}
-    </select>
+    <!--
+        <select id="selectById" resultType="user">
+            select *
+            from tb_user where id = #{id}
+        </select>
+    -->
 </mapper>

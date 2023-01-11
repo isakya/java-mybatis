@@ -273,4 +273,52 @@ public class MyBatisTest {
         // 5. 释放资源
         sqlSession.close();
     }
+
+    @Test
+    public void testDeleteById() throws IOException {
+        int id = 9;
+
+        // 1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 获取SqlSession对象
+        // true: 设置自动提交事务
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        // 3. 虎好去Mapper接口的代理对象
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 执行方法
+        brandMapper.deleteById(id);
+
+
+        // 5. 释放资源
+        sqlSession.close();
+    }
+
+    @Test
+    public void testDeleteByIds() throws IOException {
+        int[] ids = {7,8};
+
+        // 1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 获取SqlSession对象
+        // true: 设置自动提交事务
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        // 3. 虎好去Mapper接口的代理对象
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 执行方法
+        brandMapper.deleteByIds(ids);
+
+
+        // 5. 释放资源
+        sqlSession.close();
+    }
 }
